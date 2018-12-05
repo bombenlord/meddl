@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Time for Meddl</title>
+
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        padding-top: 100px;
+      }
+
+      .responsive {
+        max-width: 20%;
+        height: auto;
+      }
+
+
+#countdown {
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+}
+
+#countdown-number {
+  color: white;
+  display: inline-block;
+  line-height: 40px;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg circle {
+  stroke-dasharray: 113px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 2px;
+  stroke: white;
+  fill: none;
+  animation: countdown 10s linear infinite forwards;
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 113px;
+  }
+}
+
+    </style>
+
+
+  </head>
+
+
+
+  <body>
+
+<script type="text/javascript">
+  var countdown = 10;
+
+  setInterval(function loop() {
+
+    countdown = --countdown <= 0 ? 10 : countdown;
+
+  }, 1000);
+
+
+function playSound() {
+  x = 10;
+
+  var number = Math.floor(Math.random() * 341);
+  var sound = new Audio('sounds/sound-' + number + '.mp3');
+
+  sound.play();
+  sound.loop = false;
+
+  setTimeout(playSound, x*1000)
+
+}
+
+playSound();
+
+
+
+</script>
+
+<img src="img/spinning-rainer.gif" alt="" class="center responsive">
+
+      <div id="countdown">
+        <div id="countdown-number"></div>
+        <svg>
+          <circle r="18" cx="20" cy="20"></circle>
+        </svg>
+      </div>
+
+
+
+
+  </body>
+</html>
